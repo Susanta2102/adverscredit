@@ -57,11 +57,13 @@ def display_metrics(y_true, y_pred, y_prob, model_name):
     st.pyplot(plt)
 
 # Streamlit application
-st.title("Credit Card Fraud Detection")
+st.title("XGBoost with Grid Search🌲")
 
 st.write("""
-## Upload Dataset
-Upload your dataset as a CSV file. The dataset should include all necessary features and the target column.
+In the following inference and comparison UI, you can upload your own dataset and choose among the different models that have been finetuned using the adversarial samples.
+""")
+st.write("""
+The models have been trained on a simple implmentation of XGBoost with Grid Search for Optimization to make the classification more robust even when faced with Adversarial dataset. We have also used Regularization and Normalization to aid the training.
 """)
 
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")

@@ -1,42 +1,23 @@
 import streamlit as st
 import pandas as pd
-import pickle
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, roc_curve
-
-def load_model(model_path):
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
-    return model
-
-def plot_confusion_matrix(y_true, y_pred):
-    cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(10, 7))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
-    plt.xlabel('Predicted')
-    plt.ylabel('Actual')
-    plt.title('Confusion Matrix')
-    st.pyplot(plt)
-
-def plot_roc_curve(y_true, y_pred_prob):
-    roc_auc = roc_auc_score(y_true, y_pred_prob)
-    fpr, tpr, _ = roc_curve(y_true, y_pred_prob)
-    plt.figure(figsize=(10, 7))
-    plt.plot(fpr, tpr, marker='.')
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title(f'ROC Curve (AUC = {roc_auc:.2f})')
-    st.pyplot(plt)
+from streamlit_pandas_profiling import st_profile_report
+from ydata_profiling import ProfileReport
 
 def main():
-    st.title("Credit Card Fraud Detection Application")
+    st.title("AdversCredit💰")
     st.header("Introduction")
     st.write("""
-        Welcome to the Credit Card Fraud Detection Application. This application allows you to:
-        - Upload a CSV file with transaction data.
-        - Run inference using a trained XGBoost model.
-        - View the results including confusion matrix, ROC curve, and other relevant metrics.
+        The project investigates the performances of XGBoost and LSTM with attention mechanisms through a web interface. This project aims to implement adversarial attack strategies on a Card Fraud Detection model and note the performance of a normally trained model on such samples.
+    """)
+    st.write("""
+        However, other models trained on the Adversarial Samples are trying to showcase the ability of machine learning algorithms to perform robustly against adversarial datasets,
+        and in the age of GenAI and the rise of synthetic datasets and prompt abilities to empower fraud. Our findings reveal the performance of such models, shedding light on the existing frameworks against attacks.
+    """)
+    
+    st.subheader("Dataset")
+    st.markdown("""
+        For the dataset we have used the Credit Card Fraud Detection Dataset link to which can be found [here](https://www.kaggle.com/datasets/nelgiriyewithana/credit-card-fraud-detection-dataset-2023),
+        which comes containing over 550,000 samples with the classes divided exactly in half.
     """)
 
 if __name__ == "__main__":
