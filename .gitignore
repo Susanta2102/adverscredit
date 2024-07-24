@@ -1,3 +1,3 @@
-models/data/
-models/weights/
+code/data/
+code/weights/
 .ipynb_checkpoints

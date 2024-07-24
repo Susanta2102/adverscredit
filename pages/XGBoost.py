@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 
 # Paths to the pre-trained models
 model_paths = {
-    "Normal XGBoost": "/Users/aryankargwal/adverscredit/models/weights/xgboost.pkl",
-    "XGBoost with FGSA Training": "/Users/aryankargwal/adverscredit/models/weights/xgboost_fgsa.pkl",
-    "XGBoost with PGD Training": "/Users/aryankargwal/adverscredit/models/weights/xgboost_pgd.pkl"
+    "Normal XGBoost": "/Users/aryankargwal/adverscredit/code/weights/xgboost.pkl",
+    "XGBoost with FGSA Training": "/Users/aryankargwal/adverscredit/code/weights/xgboost_fgsa.pkl",
+    "XGBoost with PGD Training": "/Users/aryankargwal/adverscredit/code/weights/xgboost_pgd.pkl"
 }
 
 # Function to load model from pkl file

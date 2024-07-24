@@ -39,13 +39,14 @@ class LSTMWithAttention(nn.Module):
         out = self.fc(attn_out)
         return out
 
+@st.cache_data
 def load_model(model_path, input_dim, hidden_dim, output_dim, num_layers=1):
     model = LSTMWithAttention(input_dim, hidden_dim, output_dim, num_layers)
     model.load_state_dict(torch.load(model_path, map_location=device))
     model.to(device)
     model.eval()
     return model
-
+    
 def evaluate_model(model, x_tensor, y_tensor, model_name):
     model.eval()
     with torch.no_grad():
@@ -129,9 +130,9 @@ if uploaded_file:
 
     # Define model paths
     model_paths = {
-        "Normal LSTM": "/Users/aryankargwal/adverscredit/models/weights/lstm.pth",
-        "LSTM with FGSA Training": "/Users/aryankargwal/adverscredit/models/weights/lstm_fgsa.pth",
-        "LSTM with PGD Training": "/Users/aryankargwal/adverscredit/models/weights/lst_pgd.pth"
+        "Normal LSTM": "/Users/aryankargwal/adverscredit/code/weights/lstm.pth",
+        "LSTM with FGSA Training": "/Users/aryankargwal/adverscredit/code/weights/lstm_fgsa.pth",
+        "LSTM with PGD Training": "/Users/aryankargwal/adverscredit/code/weights/lst_pgd.pth"
     }
 
     # Preload the models
